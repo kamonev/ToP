@@ -2,6 +2,7 @@ import pygame
 from settings import *
 from player import Player
 from map import world_map
+from ray_casting import rayCasting
 import math
 
 
@@ -18,11 +19,7 @@ while True:
 
     sc.fill(black)
 
-    pygame.draw.circle(sc, purple, (int(player.x), int(player.y)), 12)
-    pygame.draw.line(sc, purple, player.pos, (player.x + width * math.cos(player.angle), player.y + width * math.sin(player.angle)) )
-
-    for x,y in world_map:
-        pygame.draw.rect(sc, purple, (x,y,TILE, TILE), 2)
+    rayCasting(sc, player.pos, player.angle)
 
     pygame.display.flip()
     frames.tick(fps)
