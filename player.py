@@ -1,5 +1,6 @@
 from settings import *
 import pygame
+import math
 
 class Player:
     def __init__(self):
@@ -12,15 +13,21 @@ class Player:
 
 
     def movement(self):
+        sinA = math.sin(self.angle)
+        cosA = math.sin(self.angle)
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:
-            self.y -= p_speed
+            self.x += p_speed * cosA
+            self.y += p_speed * sinA
         if keys[pygame.K_s]:
-            self.y += p_speed
+            self.x += -p_speed * cosA
+            self.y += -p_speed * sinA
         if keys[pygame.K_a]:
-            self.x -= p_speed
+            self.x += p_speed * sinA
+            self.y += -p_speed * cosA
         if keys[pygame.K_d]:
-            self.x += p_speed
+            self.x += -p_speed * sinA
+            self.y += p_speed * cosA
         if keys[pygame.K_LEFT]:
             self.angle -= 0.02
         if keys[pygame.K_RIGHT]:
