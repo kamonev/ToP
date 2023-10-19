@@ -1,7 +1,7 @@
 #settings
 width = 800
 height = 800
-
+fps = 60
 
 #player settings
 p_pos = (width // 2, height // 2)
