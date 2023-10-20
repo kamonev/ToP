@@ -2,20 +2,44 @@ import pygame
 from settings import *
 from map import world_map
 
-def rayCasting(sc, p_pos, p_angle):
-    cur_angle = p_angle - fov // 2
-    x0, y0 = p_pos
+
+def mapping(a, b):
+    return (a // TILE) * TILE, (b // TILE) * TILE
+
+
+def rayCasting(sc, player_pos, player_angle):
+    cur_angle = player_angle - half_fov
+    ox, oy = player_pos
+    xm, ym = mapping(ox, oy)
     for ray in range(num_rays):
-        sinA = math.sin(cur_angle)
-        cosA = math.cos(cur_angle)
-        for depth in range(max_depth):
-            x = x0 + depth * cosA
-            y = y0 + depth * sinA
-            if (x // TILE * TILE, y // TILE * TILE) in world_map:
-                depth *= math.cos(p_angle - cur_angle)
-                pr_height = pr_coeff / depth
-                depth_c = 255 / (1 + depth * depth * 0.00005)
-                depth_color = (depth_c, depth_c, depth_c)
-                pygame.draw.rect(sc, depth_color, (ray * scale, height // 2 - pr_height // 2, scale, pr_height))
+        sin_a = math.sin(cur_angle)
+        cos_a = math.cos(cur_angle)
+        sin_a = sin_a if sin_a else 0.000001
+        cos_a = cos_a if cos_a else 0.000001
+
+        # verticals
+        x, dx = (xm + TILE, 1) if cos_a >= 0 else (xm, -1)
+        for i in range(0, width, TILE):
+            depth_v = (x - ox) / cos_a
+            y = oy + depth_v * sin_a
+            if mapping(x + dx, y) in world_map:
                 break
+            x += dx * TILE
+
+        # horizontals
+        y, dy = (ym + TILE, 1) if sin_a >= 0 else (ym, -1)
+        for i in range(0, height, TILE):
+            depth_h = (y - oy) / sin_a
+            x = ox + depth_h * cos_a
+            if mapping(x, y + dy) in world_map:
+                break
+            y += dy * TILE
+
+        # projection
+        depth = depth_v if depth_v < depth_h else depth_h
+        depth *= math.cos(player_angle - cur_angle)
+        proj_height = pr_coeff / depth
+        c = 255 / (1 + depth * depth * 0.00002)
+        color = (c, c // 2, c // 3)
+        pygame.draw.rect(sc, color, (ray * scale, half_height - proj_height // 2, scale, proj_height))
         cur_angle += delta_angle
