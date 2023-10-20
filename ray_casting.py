@@ -2,6 +2,7 @@ import pygame
 from settings import *
 from map import world_map
 
+
 def rayCasting(sc, p_pos, p_angle):
     cur_angle = p_angle - fov // 2
     x0, y0 = p_pos
