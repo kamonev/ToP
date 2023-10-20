@@ -25,5 +25,7 @@ while True:
     drawing.background()
     drawing.world(player.pos, player.angle)
 
+    drawing.fps(frames)
+
     pygame.display.flip()
     frames.tick(fps)

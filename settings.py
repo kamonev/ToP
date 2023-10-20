@@ -1,12 +1,13 @@
 import math
 
-#settings
+# settings
 width = 1280
 height = 720
 fps = 60
 TILE = 50
+fps_pos = width - 65, 5
 
-#ray casting
+# ray casting
 fov = math.pi / 3
 num_rays = 120
 max_depth = 800
@@ -15,13 +16,12 @@ distance = num_rays / (2 * math.tan(fov / 2))
 pr_coeff = 3 * distance * TILE
 scale = width // num_rays
 
-#player settings
+# player settings
 p_pos = (width // 2, height // 2)
 p_angle = 0
 p_speed = 2
 
-
-#colors
+# colors
 black = (0, 0, 0)
 white = (255, 255, 255)
 purple = (176, 38, 255)

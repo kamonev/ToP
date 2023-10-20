@@ -2,6 +2,7 @@ from settings import *
 import pygame
 import math
 
+
 class Player:
     def __init__(self):
         self.x, self.y = p_pos
@@ -10,7 +11,6 @@ class Player:
     @property
     def pos(self):
         return (self.x, self.y)
-
 
     def movement(self):
         sinA = math.sin(self.angle)
