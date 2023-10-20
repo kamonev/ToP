@@ -23,6 +23,11 @@ p_pos = (width // 2, height // 2)
 p_angle = 0
 p_speed = 2
 
+# minimap settings
+map_scale = 5
+map_tile = TILE // map_scale
+map_pos = (0, height - height // map_scale)
+
 # colors
 black = (0, 0, 0)
 white = (255, 255, 255)
@@ -31,3 +36,4 @@ blue = (0, 180, 255)
 gray = (50, 50, 50)
 green = (0, 222, 0)
 orange = (255, 165, 0)
+red = (220, 0, 0)
