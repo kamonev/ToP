@@ -3,17 +3,19 @@ import math
 # settings
 width = 1280
 height = 720
+half_height = height // 2
 fps = 60
 TILE = 50
 fps_pos = width - 65, 5
 
 # ray casting
 fov = math.pi / 3
-num_rays = 120
+half_fov = fov // 2
+num_rays = 300
 max_depth = 800
 delta_angle = fov / num_rays
 distance = num_rays / (2 * math.tan(fov / 2))
-pr_coeff = 3 * distance * TILE
+pr_coeff = distance * TILE
 scale = width // num_rays
 
 # player settings

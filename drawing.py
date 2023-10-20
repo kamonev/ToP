@@ -10,8 +10,8 @@ class Drawing:
 
     # Render the background of the game
     def background(self):
-        pygame.draw.rect(self.sc, blue, (0, 0, width, height // 2))
-        pygame.draw.rect(self.sc, gray, (0, height // 2, width, height // 2))
+        pygame.draw.rect(self.sc, blue, (0, 0, width, half_height))
+        pygame.draw.rect(self.sc, gray, (0, half_height, width, half_height))
 
     # Render the game world using ray casting
     def world(self, player_pos, player_angle):
