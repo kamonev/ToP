@@ -10,6 +10,8 @@ class Drawing:
         self.sc_map = sc_map  #mini map
         self.font = pygame.font.SysFont('Arial', 36, bold=True)  # Initialize a font for displaying text
 
+        self.texture = pygame.image.load('img/1.png').convert()
+
     # Render the background of the game
     def background(self):
         pygame.draw.rect(self.sc, blue, (0, 0, width, half_height))
@@ -17,7 +19,7 @@ class Drawing:
 
     # Render the game world using ray casting
     def world(self, player_pos, player_angle):
-        rayCasting(self.sc, player_pos, player_angle)
+        rayCasting(self.sc, player_pos, player_angle, self.texture)
 
     # Display the frames per second on the screen
     def fps(self, clock):
