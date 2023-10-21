@@ -15,9 +15,13 @@ num_rays = 300
 max_depth = 800
 delta_angle = fov / num_rays
 distance = num_rays / (2 * math.tan(fov / 2))
-pr_coeff = distance * TILE
+pr_coeff = 3 * distance * TILE
 scale = width // num_rays
 
+# texture settings (1200 * 1200)
+texture_width = 1200
+texture_height = 1200
+texture_scale = texture_width // TILE
 # player settings
 p_pos = (width // 2, height // 2)
 p_angle = 0
