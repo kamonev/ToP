@@ -7,9 +7,10 @@ def mapping(a, b):
     return (a // TILE) * TILE, (b // TILE) * TILE
 
 
-def rayCasting(sc, player_pos, player_angle, textures):
-    cur_angle = player_angle - half_fov
-    ox, oy = player_pos
+def rayCasting(player, textures):
+    walls = []
+    cur_angle = player.angle - half_fov
+    ox, oy = player.pos
     xm, ym = mapping(ox, oy)
     for ray in range(num_rays):
         sin_a = math.sin(cur_angle)
@@ -50,5 +51,8 @@ def rayCasting(sc, player_pos, player_angle, textures):
         # We select the surface for the texture in the form of a square
         wall_column = textures[texture].subsurface(offset * texture_scale, 0, texture_scale, texture_height)
         wall_column = pygame.transform.scale(wall_column,(scale, proj_height))
-        sc.blit(wall_column,(ray * scale, half_height - proj_height // 2))
+        wall_pos = (ray * scale, half_height - proj_height // 2)
+
+        walls.append((depth, wall_column, wall_pos))
         cur_angle += delta_angle
+    return walls
