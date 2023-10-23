@@ -28,7 +28,7 @@ class SpriteObject:
             self.sprite_angles = [frozenset(range(i, i + 45)) for i in range(0, 360, 45)]
             self.sprite_pos = {angle: pos for angle, pos in zip(self.sprite_angles, self.object)}
     #Sprite placement
-    def object_locate(self, player, walls):
+    def object_locate(self, player):
         dx, dy = self.x - player.x, self.y - player.y
         sprite_distance = math.sqrt(dx**2 + dy**2)
 
@@ -41,8 +41,10 @@ class SpriteObject:
         cur_ray = center_ray + delta_rays
         sprite_distance *= math.cos(half_fov - cur_ray * delta_angle)
 
-        if 0 <= cur_ray <= num_rays - 1 and sprite_distance < walls[cur_ray][0]:
-            proj_height = int(pr_coeff / sprite_distance * self.scale)
+
+        fake_ray = cur_ray + fake_rays
+        if 0 <= fake_ray <= fake_rays_range and sprite_distance > 30:
+            proj_height = min(int(pr_coeff / sprite_distance * self.scale), double_height)
             half_proj_height = proj_height // 2
             shift = half_proj_height * self.shift
 
