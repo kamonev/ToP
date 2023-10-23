@@ -43,7 +43,7 @@ def rayCasting(player, textures):
         # projection
         depth, offset, texture = (depth_v,yv, texture_v) if depth_v < depth_h else (depth_h,xh,texture_h)
         offset = int(offset) % TILE
-        depth *= math.cos(player_angle - cur_angle)
+        depth *= math.cos(player.angle - cur_angle)
         # improved performance when approaching walls
         depth = max(depth,0.00001)
         proj_height = min(int(pr_coeff / depth),2 * height)
