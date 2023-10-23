@@ -2,6 +2,7 @@ import math
 
 # settings
 width = 1200
+height = 720
 height = 800
 half_height = height // 2
 fps = 60
@@ -41,3 +42,5 @@ gray = (50, 50, 50)
 green = (0, 222, 0)
 orange = (255, 165, 0)
 red = (220, 0, 0)
+
+sandy = (244,164,96)

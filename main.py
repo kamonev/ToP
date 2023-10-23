@@ -25,7 +25,7 @@ while True:
     sc.fill(black)
 
     # sky and floor
-    drawing.background()
+    drawing.background(player.angle)
     drawing.world(player.pos, player.angle)
 
     drawing.fps(frames)
