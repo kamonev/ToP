@@ -23,10 +23,15 @@ scale = width // num_rays
 texture_width = 1200
 texture_height = 1200
 texture_scale = texture_width // TILE
+
 # player settings
 p_pos = (width // 2, height // 2)
 p_angle = 0
 p_speed = 2
+
+# sprites settings
+double_pi = 2 * math.pi
+center_ray = num_rays // 2 - 1
 
 # minimap settings
 map_scale = 6
