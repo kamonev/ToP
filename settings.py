@@ -3,6 +3,7 @@ import math
 # settings
 width = 1200
 height = 720
+height = 800
 half_height = height // 2
 fps = 60
 TILE = 50
@@ -10,7 +11,7 @@ fps_pos = width - 65, 5
 
 # ray casting
 fov = math.pi / 3
-half_fov = fov // 2
+half_fov = fov / 2
 num_rays = 300
 max_depth = 800
 delta_angle = fov / num_rays
@@ -28,7 +29,7 @@ p_angle = 0
 p_speed = 2
 
 # minimap settings
-map_scale = 5
+map_scale = 6
 map_tile = TILE // map_scale
 map_pos = (0, height - height // map_scale)
 
