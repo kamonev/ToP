@@ -11,9 +11,9 @@ class Drawing:
         self.font = pygame.font.SysFont('Arial', 36, bold=True)  # Initialize a font for displaying text
 
         # assign keys to the pictures
-        self.textures = {'1': pygame.image.load('img/1.png').convert(),
-                         '2': pygame.image.load('img/2.png').convert(),
-                         's': pygame.image.load('img/sky.png').convert()}
+        self.textures = {'1': pygame.image.load('img/fence.png').convert(),
+                         '2': pygame.image.load('img/fence.png').convert(),
+                         's': pygame.image.load('img/4.png').convert()}
 
     # Render the background of the game
     def background(self,angle):
