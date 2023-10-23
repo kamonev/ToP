@@ -28,7 +28,7 @@ while True:
     # sky and floor
     drawing.background(player.angle)
     walls = rayCasting(player, drawing.textures)
-    drawing.world(walls + [obj.object_locate(player, walls) for obj in sprites.list_of_objects])
+    drawing.world(walls + [obj.object_locate(player) for obj in sprites.list_of_objects])
     drawing.fps(frames)
 
     drawing.mini_map(player)
