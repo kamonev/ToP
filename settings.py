@@ -32,6 +32,7 @@ p_speed = 2
 # sprites settings
 double_pi = 2 * math.pi
 center_ray = num_rays // 2 - 1
+fake_rays = 100
 
 # minimap settings
 map_scale = 6
