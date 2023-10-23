@@ -11,11 +11,17 @@ class Drawing:
         self.font = pygame.font.SysFont('Arial', 36, bold=True)  # Initialize a font for displaying text
 
         # assign keys to the pictures
-        self.textures = {'1': pygame.image.load('img/1.png').convert(), '2': pygame.image.load('img/2.png').convert()}
+        self.textures = {'1': pygame.image.load('img/1.png').convert(),
+                         '2': pygame.image.load('img/2.png').convert(),
+                         's': pygame.image.load('img/sky.png').convert()}
 
     # Render the background of the game
-    def background(self):
-        pygame.draw.rect(self.sc, blue, (0, 0, width, half_height))
+    def background(self,angle):
+        sky_offset = -5 * math.degrees(angle) % width
+        self.sc.blit(self.textures['s'], (sky_offset, 0))
+        self.sc.blit(self.textures['s'], (sky_offset - width, 0))
+        self.sc.blit(self.textures['s'], (sky_offset + width, 0))
+
         pygame.draw.rect(self.sc, gray, (0, half_height, width, half_height))
 
     # Render the game world using ray casting
@@ -35,5 +41,5 @@ class Drawing:
                                                                map_y + 12 * math.sin(player.angle)), 2)
         pygame.draw.circle(self.sc_map, red, (int(map_x), int(map_y)), 5)
         for x, y in mini_map:
-            pygame.draw.rect(self.sc_map, green, (x, y, map_tile, map_tile))
+            pygame.draw.rect(self.sc_map, sandy, (x, y, map_tile, map_tile))
         self.sc.blit(self.sc_map, map_pos)
