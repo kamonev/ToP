@@ -10,17 +10,16 @@ from drawing import Drawing
 pygame.init()
 
 sc = pygame.display.set_mode((width, height))
-sc_map = pygame.Surface((width // map_scale, height // map_scale))
+pygame.mouse.set_visible(False)
+sc_map = pygame.Surface(minimap_res)
 
 sprites = Sprites()
 frames = pygame.time.Clock()
-player = Player()
-drawing = Drawing(sc, sc_map)
+player = Player(sprites)
+drawing = Drawing(sc, sc_map, player)
 
 while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            exit()
+    
     player.movement()
 
     sc.fill(black)
@@ -32,6 +31,8 @@ while True:
     drawing.fps(frames)
 
     drawing.mini_map(player)
+
+    drawing.player_weapon()
 
     pygame.display.flip()
     frames.tick(fps)
