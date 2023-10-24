@@ -18,8 +18,9 @@ class Player:
         self.shot = False
 
     @property
-    def pos(self):
-        return (self.x, self.y)
+    def pos(self): 
+
+        return [self.x, self.y]
 
     @property
     def collision_list(self):
@@ -95,7 +96,9 @@ class Player:
                 exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1 and not self.shot:
+                    
                     self.shot = True
+                    
 
     def mouse_control(self):
         if pygame.mouse.get_focused():
