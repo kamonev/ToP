@@ -25,8 +25,11 @@ class Drawing:
         pygame.draw.rect(self.sc, gray, (0, half_height, width, half_height))
 
     # Render the game world using ray casting
-    def world(self, player_pos, player_angle):
-        rayCasting(self.sc, player_pos, player_angle, self.textures)
+    def world(self, world_objects):
+        for obj in sorted(world_objects, key=lambda n: n[0], reverse = True):
+            if obj[0]:
+                _, object, object_pos = obj
+                self.sc.blit(object, object_pos)
 
     # Display the frames per second on the screen
     def fps(self, clock):
