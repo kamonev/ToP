@@ -30,6 +30,22 @@ class Sprites:
                 'flag' : 'object',
                 'obj_action' : []
             },
+            'skull' : {
+                'sprite' : [pygame.image.load(f'sprites/enemy/skull/skullStay/{i}.png').convert_alpha() for i in range(8)],
+                'viewing_angles' : True,
+                'shift' : 0,
+                'scale' : (0.4, 0.4),
+                'side' : 30,
+                'animation' : [],
+                'death_animation' : deque([pygame.image.load(f'sprites/enemy/skull/skullStay/{i}.png').convert_alpha() for i in range(1)]),
+                'is_dead' : None,
+                'dead_shift' : 2.6,
+                'animation_dist':800,
+                'animation_speed':10,
+                'blocked' : True,
+                'flag' : 'object',
+                'obj_action' : []
+            },
             'amogus' : {
                 'sprite' : pygame.image.load('sprites/enemy/amogus/0.png').convert_alpha(),
                 'viewing_angles' : None,
@@ -55,7 +71,7 @@ class Sprites:
             SpriteObject(self.sprite_parameters['barrel'], (17.7, 3.5)),
             SpriteObject(self.sprite_parameters['barrel'], (17.7, 6.5)),
             SpriteObject(self.sprite_parameters['amogus'], (17.7, 11.5)),
-            #SpriteObject(self.sprite_types['skull'], False, (15.1, 8.1), 0.4, 0.6),
+            SpriteObject(self.sprite_parameters['skull'],  (15.7, 11.5)),
         ]
 
 
@@ -112,11 +128,11 @@ class SpriteObject:
         dx, dy = self.x - player.x, self.y - player.y
         self.sprite_distance = math.sqrt(dx**2 + dy**2)
 
-        theta = math.atan2(dy,dx)
-        gamma = theta - player.angle
+        self.theta = math.atan2(dy,dx)
+        gamma = self.theta - player.angle
         if dx > 0 and 180 <= math.degrees(player.angle) <= 360 or dx < 0 and dy < 0:
             gamma += double_pi
-        theta -= 1.4 * gamma
+        self.theta -= 1.4 * gamma
 
         delta_rays = int(gamma / delta_angle)
         self.cur_ray = center_ray + delta_rays
@@ -174,13 +190,13 @@ class SpriteObject:
 
     def visible_sprite(self):
         if self.viewing_angles:
-            if theta < 0:
-                theta += double_pi
-            theta = 360 - int(math.degrees(theta))
+            if self.theta < 0:
+                self.theta += double_pi
+            self.theta = 360 - int(math.degrees(self.theta))
 
             for angles in self.sprite_angles:
-                if theta in angles:
-                    return self.sprite_pos[angles]
+                if self.theta in angles:
+                    return self.sprite_positions[angles]
         return self.object
 
     def dead_animation(self):
