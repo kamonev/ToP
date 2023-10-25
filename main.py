@@ -34,6 +34,7 @@ while True:
     drawing.player_weapon()
 
     interaction.interaction_objects()
-    
+    interaction.npc_action()
+
     pygame.display.flip()
     frames.tick(fps)

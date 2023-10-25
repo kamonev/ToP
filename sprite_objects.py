@@ -60,7 +60,7 @@ class Sprites:
                 'animation_speed':10,
                 'blocked' : True,
                 'flag' : 'npc_enemy',
-                'obj_action' : []
+                'obj_action' : deque([pygame.image.load(f'sprites/enemy/amogus/explosive_anim/{i}.png').convert_alpha() for i in range(1)])
             }
         }
         #self.sprite_types = {
