@@ -1,9 +1,6 @@
-import pygame
-from settings import *
 from player import Player
 from sprite_objects import *
 from ray_casting import rayCasting
-import math
 from drawing import Drawing
 from interactions import Interaction
 
@@ -22,8 +19,6 @@ interaction = Interaction(player, sprites, drawing)
 while True:
     
     player.movement()
-
-    
 
     # sky and floor
     drawing.background(player.angle)

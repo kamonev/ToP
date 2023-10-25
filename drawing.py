@@ -1,6 +1,5 @@
 import pygame
 from settings import *
-from ray_casting import rayCasting
 from map import mini_map
 from collections import deque
 
