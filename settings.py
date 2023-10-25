@@ -5,6 +5,8 @@ width = 1200
 height = 720
 height = 800
 half_height = height // 2
+half_width = width // 2
+penta_height = 5 * height
 double_height = 2 * height
 fps = 60
 TILE = 50
@@ -37,9 +39,11 @@ fake_rays = 100
 fake_rays_range = num_rays - 1 + 2 * fake_rays
 
 # minimap settings
-map_scale = 6
+minimap_scale = 5
+minimap_res = (width // minimap_scale, height // minimap_scale)
+map_scale = 1 * minimap_scale
 map_tile = TILE // map_scale
-map_pos = (0, height - height // map_scale)
+map_pos = (0, height - height // minimap_scale)
 
 # colors
 black = (0, 0, 0)
