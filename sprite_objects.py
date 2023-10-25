@@ -71,6 +71,11 @@ class Sprites:
             SpriteObject(self.sprite_parameters['barrel'], (17.7, 3.5)),
             SpriteObject(self.sprite_parameters['barrel'], (17.7, 6.5)),
             SpriteObject(self.sprite_parameters['amogus'], (17.7, 11.5)),
+            SpriteObject(self.sprite_parameters['amogus'], (17.7, 13.5)),
+            SpriteObject(self.sprite_parameters['amogus'], (17.7, 21.5)),
+            SpriteObject(self.sprite_parameters['amogus'], (11.7, 21.5)),
+            SpriteObject(self.sprite_parameters['amogus'], (27.7, 13.5)),
+            SpriteObject(self.sprite_parameters['amogus'], (22.7, 11.5)),
             SpriteObject(self.sprite_parameters['skull'],  (15.7, 11.5)),
         ]
 
