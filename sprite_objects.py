@@ -1,9 +1,6 @@
 import pygame
 from settings import *
 from collections import deque
-from numba.core import types
-from numba.typed import Dict
-from numba import int32
 
 
 # Initializing sprites from the folder with img files

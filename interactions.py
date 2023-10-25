@@ -2,7 +2,7 @@ from settings import *
 from map import world_map
 from ray_casting import mapping
 import math
-import pygame
+
 
 def ray_casting_npc_player(npc_x, npc_y,  world_map, player_pos):
     ox, oy = player_pos[0], player_pos[1]

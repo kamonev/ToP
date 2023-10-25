@@ -3,6 +3,7 @@ import pygame
 import math
 from map import collision_walls
 
+
 class Player:
     def __init__(self, sprites):
         self.x, self.y = p_pos
